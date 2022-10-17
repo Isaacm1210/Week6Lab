@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,12 +14,16 @@
     </head>
     <body>
         <h1>Shopping List</h1>
-        <div>Hello, ${username} 
-        <a href="ShoppingList" name="logout">Logout</a>
-        </div>
-        <form>
+        
+        <div>Hello, ${user}</div>
+            <a href="ShoppingList?action=logout" name="logout">Logout</a>  
+            
+        <form action="ShoppingList" method="post">
             Add Item: <input type="text" name="item" value="">
-            <input type="submit" name="add" value="add">
+            <input type="hidden" name="action" value="add">
+            <input type="submit" value="add">
         </form>
+            
+            
     </body>
 </html>
