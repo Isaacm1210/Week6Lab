@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
  * @author mhame
@@ -44,18 +45,29 @@ public class ShoppingListServlet extends HttpServlet {
        
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
+        
         request.setAttribute("action", action);
         
         if (action.equals("register")){
-            String user = request.getParameter("username");
-            request.setAttribute("user", user);
+            String username = request.getParameter("username");
+            request.setAttribute("user", username);
+            session.setAttribute("username", username);
+            
+            ArrayList<String> itemList = new ArrayList<>();
+            session.setAttribute("itemList", itemList);
+            
             session.setAttribute("loggedin", "true");
             getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
         }
         
-        
+        if (action.equals("add")){
+            ArrayList<String> itemList = (ArrayList<String>) session.getAttribute("itemList");
+            String item = request.getParameter("item");
+            itemList.add(item);
+            session.setAttribute("itemList", itemList);
+        }
        
-        
+
         
         getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
     }
