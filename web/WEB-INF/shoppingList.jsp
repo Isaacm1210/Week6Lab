@@ -30,7 +30,7 @@
                     <input type="radio" name="itemRemove" value="${items}">${items}</input>
                     <br>
                 </c:forEach>
-                    <input type="submit"  value="delete">
+                    <input type="submit" value="delete">
             </form>
             
     </body>
