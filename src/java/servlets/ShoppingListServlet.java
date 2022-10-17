@@ -67,7 +67,12 @@ public class ShoppingListServlet extends HttpServlet {
             session.setAttribute("itemList", itemList);
         }
        
-
+        if(action.equals("delete")){
+        ArrayList<String> itemList = (ArrayList<String>) session.getAttribute("itemList");
+        String item = request.getParameter("itemRemove");
+        itemList.remove(item);
+        session.setAttribute("itemList", itemList);
+        }
         
         getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
     }

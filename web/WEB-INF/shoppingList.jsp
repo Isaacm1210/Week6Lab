@@ -24,14 +24,13 @@
             <input type="submit" value="add">
         </form>
             
-            <form action="ShoppingList">
+            <form action="ShoppingList?action=delete" method="post">
                 <c:forEach var="items" items="${itemList}" >
                     
-                    <input type="radio" name="item" value="${items}">${items}</input>
+                    <input type="radio" name="itemRemove" value="${items}">${items}</input>
                     <br>
                 </c:forEach>
-                
-                    <input type="submit" name="action" value="delete">
+                    <input type="submit"  value="delete">
             </form>
             
     </body>
